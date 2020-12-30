@@ -2,7 +2,7 @@
 
 ## DB
 
-Needs a MySQL DB connection in /.env
+Needs a MySQL DB connection in /.env  
 Needs a RedisLabs connection string in /.env
 
 ## Run in development
