@@ -27,4 +27,6 @@ Route::apiResources([
     'menu-items' => MenuItemController::class
 ]);
 
+Route::get('/menu/{id}', [MenuItemController::class, 'get_restaurant_menu']);
+
 Route::get('/flush', [UserController::class, 'flush']);

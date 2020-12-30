@@ -4,9 +4,29 @@ namespace App\Http\Controllers;
 
 use App\Models\MenuItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MenuItemController extends Controller
 {
+
+    /**
+     * Eine Controller funktion um alle Menu Items von einem Restaurant zu finden
+     * 
+     * @param $restaurant_id
+     * @return 
+     */
+    public function get_restaurant_menu($id)
+    {
+        $menu = DB::table('menu_items')
+            ->where('restaurant_id', '=', $id)
+            ->get();
+
+        return response()->json([
+            'menu' => $menu
+        ], 200);
+    }
+
+
     /**
      * Eine Controller function um das Menü-Item zu speichern.
      * Wird dann per ID aufgerufen und in der Menü für ein Restaurant gezeigt.
@@ -40,32 +60,10 @@ class MenuItemController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\MenuItem  $menuItem
-     * @return \Illuminate\Http\Response
-     */
-    public function show(MenuItem $menuItem)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\MenuItem  $menuItem
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(MenuItem $menuItem)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
+     * Menu item bearbeiten.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\MenuItem  $menuItem
+     * @param  $id => die ID vom Menu Item 
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
