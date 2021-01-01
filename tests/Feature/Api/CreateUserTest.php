@@ -15,7 +15,7 @@ class CreateUserTest extends TestCase
      * 2) Das der Benutzer in der DB ertsellt wird.
      * @return void
      */
-    public function testing_user_creation_with_valid_form_data()
+    public function test_user_creation_with_valid_form_data()
     {
         $response = $this
             ->withHeader('Content-Type', 'application/json')
@@ -35,7 +35,7 @@ class CreateUserTest extends TestCase
             ]);
     }
 
-    public function testing_user_creation_with_invalid_form_data()
+    public function test_user_creation_with_invalid_form_data()
     {
         $response = $this
             ->withHeader('Content-Type', 'application/json')

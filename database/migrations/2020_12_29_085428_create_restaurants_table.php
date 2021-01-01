@@ -19,10 +19,11 @@ class CreateRestaurantsTable extends Migration
             $table->char('tag_one', 20);
             $table->char('tag_two', 20)->nullable();
             $table->char('address', 255);
-            $table->integer('zip');
+            $table->char('zip', 20);
             $table->char('city', 255);
             $table->char('email', 255)->unique();
             $table->string('password');
+            $table->char('imageUrl', 255)->nullable();
 
             $table->timestamps();
         });

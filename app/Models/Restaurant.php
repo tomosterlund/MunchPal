@@ -17,6 +17,7 @@ class Restaurant extends Model
         'zip',
         'city',
         'email',
-        'password'
+        'password',
+        'imageUrl'
     ];
 }

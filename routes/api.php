@@ -29,4 +29,14 @@ Route::apiResources([
 
 Route::get('/menu/{id}', [MenuItemController::class, 'get_restaurant_menu']);
 
+Route::post('/restaurants-image/{rid}', [RestaurantController::class, 'upload_image']);
+
 Route::get('/flush', [UserController::class, 'flush']);
+
+Route::post('/img', function(Request $request) {
+
+    $path = $request->file('photo')->store('photos');
+
+    return $path;
+
+});

@@ -61,6 +61,35 @@ class RestaurantController extends Controller
     }
 
     /**
+     * Eine Funktion um ein Bild für das Restaurant in S3 hochzuladen
+     * @param \Illuminate\Http\Request
+     * @param $rid == ID für das Restaurant
+     * @return JSON {"storedImage": true} oder {"error400": "This request needs an attached image"}
+     */
+    public function upload_image(Request $request, $rid)
+    {
+        // Wenn kein Bild im Request gefunden wurde => return
+        $photo = $request->file('photo');
+        if (!$photo) {
+            return response()->json([
+                'error400' => 'This request needs an attached image'
+            ], 400);
+        }
+
+        // Wenn Bild im Request gefunden wurde
+        $restaurant = Restaurant::find($rid);
+
+        $path = $request->file('photo')->store('photos');
+        
+        $restaurant->imageUrl = $path;
+        $restaurant->save();
+
+        return response()->json([
+            'storedImage' => true
+        ], 200);
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  \App\Models\Restaurant  $restaurant
