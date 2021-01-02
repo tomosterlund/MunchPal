@@ -30,3 +30,6 @@ Route::get('/verify-user', function() {
     return $verifiedUser;
 
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
