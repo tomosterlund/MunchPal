@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MenuItemController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -24,12 +25,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResources([
     'users' => UserController::class,
     'restaurants' => RestaurantController::class,
-    'menu-items' => MenuItemController::class
+    'menu-items' => MenuItemController::class,
+    'orders' => OrderController::class
 ]);
 
 Route::get('/menu/{id}', [MenuItemController::class, 'get_restaurant_menu']);
 
 Route::post('/restaurants-image/{rid}', [RestaurantController::class, 'upload_image']);
+
+Route::patch('/confirm-order/{oid}', [OrderController::class, 'update']);
+
+Route::get('/show-all-orders/{rid}', [OrderController::class, 'show_all_orders_for_restaurant']);
 
 Route::get('/flush', [UserController::class, 'flush']);
 

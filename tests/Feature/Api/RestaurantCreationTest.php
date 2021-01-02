@@ -49,17 +49,18 @@ class RestaurantCreationTest extends TestCase
 
     public function test_restaurant_not_created_with_invalid_data()
     {
+        $restaurant = Restaurant::factory()->make();
 
         $response = $this
             ->withHeader('Content-Type', 'application/json')
             ->postJson('/api/restaurants', [
-                'name' => 'bla di blabla',
+                'name' => $restaurant->name,
                 'tag_one' => 'Italian',
                 'tag_two' => 'Pizza',
-                'address' => 'hoodihooo',
-                'zip' => '156',
-                'city' => 'babidooo',
-                'email' => 'tom.osterlundddd', //invalid email
+                'address' => $restaurant->address,
+                'zip' => $restaurant->zip,
+                'city' => $restaurant->city,
+                'email' => $restaurant->email, //invalid email
                 'password' => 'sdfergfer'
             ]);
 

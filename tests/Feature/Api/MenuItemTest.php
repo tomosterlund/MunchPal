@@ -9,6 +9,9 @@ use Tests\TestCase;
 
 class CreateMenuItem extends TestCase
 {
+
+    // use RefreshDatabase;
+
     /**
      * Testet das Erstellen vom Menu Items
      */
@@ -50,9 +53,13 @@ class CreateMenuItem extends TestCase
      */
     public function test_updating_menu_item()
     {
+        // $this->withoutExceptionHandling();
+
+        MenuItem::factory()->count(1)->create();
+
         $response = $this
             ->withHeader('Content-Type', 'application/json')
-            ->putJson('/api/menu-items/2', [
+            ->putJson('/api/menu-items/1', [
                 'name' => 'Blabla',
                 'description' => 'really tasty stuff',
                 'price' => '18.89',

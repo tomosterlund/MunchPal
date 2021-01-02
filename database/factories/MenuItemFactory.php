@@ -24,7 +24,7 @@ class MenuItemFactory extends Factory
         return [
             'name' => $this->faker->word(),
             'description' => $this->faker->sentence(6),
-            'price' => $this->faker->randomNumber(),
+            'price' => $this->faker->randomFloat(2, 0, 100),
             'restaurant_id' => 1,
             'type' => 'food',
         ];
