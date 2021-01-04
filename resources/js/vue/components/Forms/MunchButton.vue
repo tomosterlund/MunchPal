@@ -1,9 +1,9 @@
 // Eine Button
 // @param text == der Text, den im Button hineingefügt wird.
-// $emit click == ein event für den Parent, wenn der Button geglickt wird.
+// $emit clicked == ein event für den Parent, wenn der Button geglickt wird.
 
 <template>
-    <button>
+    <button @click="$emit('clicked')"> 
         {{text}}
     </button>
 </template>
@@ -33,6 +33,10 @@ button {
 
 button:hover {
     opacity: 0.92;
+}
+
+button:focus {
+    outline: none;
 }
 
 </style>
