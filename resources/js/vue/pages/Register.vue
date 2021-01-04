@@ -56,6 +56,7 @@ import MainLayout from '../components/App/MainLayout.vue'
 import Input from '../components/Forms/Input.vue'
 import MunchButton from '../components/Forms/MunchButton.vue'
 import Modal from '../components/UI/Modal.vue'
+import Axios from 'axios'
 
 export default {
     components: {
