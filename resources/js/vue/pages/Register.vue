@@ -28,6 +28,10 @@
                 label="Confirm your password"
             />
 
+            <MunchButton
+                text="Sign up now"
+            />
+
         </div>
     </MainLayout>
 </template>
@@ -35,9 +39,10 @@
 <script>
 import MainLayout from '../components/App/MainLayout.vue'
 import Input from '../components/Forms/Input.vue'
+import MunchButton from '../components/Forms/MunchButton.vue'
 
 export default {
-    components: {MainLayout, Input}
+    components: {MainLayout, Input, MunchButton}
 }
 </script>
 

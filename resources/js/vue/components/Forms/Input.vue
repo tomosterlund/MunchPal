@@ -32,7 +32,7 @@ export default {
     width: 320px;
     height: 50px;
     padding: 0;
-    margin: 16px 0 0 0;
+    margin: 14px 0 0 0;
     border-bottom: 1px solid black;
 
     input {
@@ -58,7 +58,7 @@ export default {
     input:focus + label, input:valid + label {
         bottom: 30px;
         font-size: 0.75rem;
-        color: #1c69b1;
+        color: #6574cd;
         font-weight: 800;
     }
 
@@ -73,7 +73,7 @@ export default {
     }
 
     input:focus + label, input:valid .BottomBorder, input:focus .BottomBorder {
-        border-bottom: 2px solid #4478a8;
+        border-bottom: 2px solid #6574cd;
     }
 }
 
