@@ -5,24 +5,28 @@
             <h1>Register</h1>
 
             <Input
+                @inputevent="name = $event"
                 fieldName="fullName"
                 inputType="text"
                 label="Full name"
             />
 
             <Input
+                @inputevent="email = $event"
                 fieldName="email"
                 inputType="text"
                 label="Email"
             />
 
             <Input
+                @inputevent="password = $event"
                 fieldName="password"
                 inputType="password"
                 label="Choose password"
             />
 
             <Input
+                @inputevent="pwConfirm = $event"
                 fieldName="confirmPassword"
                 inputType="password"
                 label="Confirm your password"
@@ -57,6 +61,7 @@ import Input from '../components/Forms/Input.vue'
 import MunchButton from '../components/Forms/MunchButton.vue'
 import Modal from '../components/UI/Modal.vue'
 import Axios from 'axios'
+import userApis from './../api/user-apis'
 
 export default {
     components: {
@@ -68,12 +73,17 @@ export default {
     },
     data() {
         return {
-            showModal: false
+            showModal: false,
+            name: '',
+            email: '',
+            password: '',
+            pwConfirm: ''
         }
     },
     methods: {
         signUpHandler() {
             this.showModal = true;
+            userApis.signupUserHandler(this.name, this.email, this.password, this.pwConfirm);
         }
     }
 }

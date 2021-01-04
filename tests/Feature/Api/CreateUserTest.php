@@ -23,9 +23,9 @@ class CreateUserTest extends TestCase
                 'name' => 'Tom',
                 'email' => 'tom.osterlund1@gmail.com',
                 'password' => 'klasan1',
-                'address' => 'Torfstr 22',
-                'zip' => '13353',
-                'city' => 'Berlin'
+                // 'address' => 'Torfstr 22',
+                // 'zip' => '13353',
+                // 'city' => 'Berlin'
             ]);
 
         $response
@@ -43,9 +43,9 @@ class CreateUserTest extends TestCase
                 'name' => '',
                 'email' => 'tom.osterlund1@gmail.com',
                 'password' => 'klasan1',
-                'address' => 'Torfstr 22',
-                'zip' => '13353',
-                'city' => 'Berlin'
+                // 'address' => 'Torfstr 22',
+                // 'zip' => '13353',
+                // 'city' => 'Berlin'
             ]);
 
         $response

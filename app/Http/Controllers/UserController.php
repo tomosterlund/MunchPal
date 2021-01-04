@@ -22,17 +22,17 @@ class UserController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|max:255',
             'password' => 'required|max:255',
-            'address' => 'required|max:255',
-            'zip' => 'required|max:255',
-            'city' => 'required|max:255',
+            // 'address' => 'required|max:255',
+            // 'zip' => 'required|max:255',
+            // 'city' => 'required|max:255',
         ]);
 
         $name = $request->input('name');
         $email = $request->input('email');
         $password = Hash::make($request->input('password'));
-        $address = $request->input('address');
-        $zip = $request->input('zip');
-        $city = $request->input('city');
+        // $address = $request->input('address');
+        // $zip = $request->input('zip');
+        // $city = $request->input('city');
         $_id = uniqid();
 
         Redis::command('HMSET', [
@@ -41,9 +41,9 @@ class UserController extends Controller
             "name", "$name",
             "email", "$email",
             "password", "$password",
-            "address", "$address",
-            "zip", "$zip",
-            "city", "$city"
+            // "address", "$address",
+            // "zip", "$zip",
+            // "city", "$city"
             ]);
 
         return response()->json(["created" => true], 201);

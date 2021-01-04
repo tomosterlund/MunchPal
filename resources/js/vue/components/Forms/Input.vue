@@ -6,7 +6,12 @@
 
 <template>
     <div class="InputContainer">
-        <input :type="inputType" required>
+        <input
+            @keyup="$emit('inputevent', inputValue)"
+            :type="inputType"
+            required
+            v-model="inputValue"
+        />
         <label v-bind:for="fieldName">
             {{label}}
         </label>
@@ -21,7 +26,12 @@ export default {
         'fieldName',
         'inputType',
         'label'
-    ]
+    ],
+    data() {
+        return {
+            inputValue: ''
+        }
+    }
 }
 </script>
 
