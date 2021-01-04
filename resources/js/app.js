@@ -10,11 +10,11 @@ window.Vue = require('vue');
 import VueRouter from 'vue-router'
 import { routes } from './vue/routes/routes'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faHome, faSignInAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Vue from 'vue';
 
-library.add(faBars)
+library.add(faBars, faHome, faUserPlus, faSignInAlt)
 
 /**
  * The following block of code may be used to automatically register your

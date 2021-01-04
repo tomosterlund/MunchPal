@@ -1,3 +1,6 @@
+// Der Header Komponent für die ganze app
+// @param n/a
+
 <template>
     <div id="BarsContainer">
         

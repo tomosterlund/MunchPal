@@ -1,3 +1,7 @@
+// Ein Backdrop, der den ganzen Schirm deckt.
+// Soll mit Modals oder der Sidebar benutzt werden
+// @param n/a
+
 <template>
     <div
         @click="$emit('close-backdrop')"
@@ -6,12 +10,6 @@
 
     </div>
 </template>
-
-<script>
-export default {
-
-}
-</script>
 
 <style lang="scss" scoped>
 

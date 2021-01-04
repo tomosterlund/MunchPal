@@ -1,3 +1,6 @@
+// Der main layout für die App
+// @param child == der Body für jede Seite wo der Komponent benutzt wird. wird hier in "slot" hineingefügt
+
 <template>
     <div id="MainContainer">
 
