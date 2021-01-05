@@ -43,7 +43,8 @@ class UserController extends Controller
             "password", "$password",
             ]);
         
-            Mail::to('tom.osterlund1@gmail.com')->send(new WelcomeToMunchPal($name));
+            Mail::to('tom.osterlund1@gmail.com')
+                ->send(new WelcomeToMunchPal($name));
 
         return response()->json(["created" => true], 201);
     }
