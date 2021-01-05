@@ -13,6 +13,7 @@
                     @address-change="rDetails.address = $event"
                     @zip-change="rDetails.zip = $event"
                     @city-change="rDetails.city = $event"
+                    @category-change="rDetails.tag_one = $event"
                 />
 
                 <FormTwo
@@ -21,6 +22,7 @@
                     @email-change="rDetails.email = $event"
                     @password-change="rDetails.password = $event"
                     @pwc-change="rDetails.pwConfirm = $event"
+                    :loading="loading"
                 />
             </transition>
 
@@ -49,7 +51,8 @@ import MunchButton from '../../components/Forms/MunchButton.vue'
 import Modal from '../../components/UI/Modal.vue'
 import Axios from 'axios'
 import FormOne from '../../components/Restaurants/Registration/FormOne.vue'
-import FormTwo from './../../components/Restaurants/Registration/FormTwo'
+import FormTwo from './../../components/Restaurants/Registration/FormTwo.vue'
+import RestaurantApis from './../../api/restaurant-api'
 
 export default {
     components: {
@@ -70,10 +73,12 @@ export default {
                 city: '',
                 email: '',
                 password: '',
-                pwConfirm: ''
+                pwConfirm: '',
+                tag_one: ''
             },
             showModal: false,
             showForm: 1,
+            loading: false
         }
     },
     methods: {
@@ -81,8 +86,11 @@ export default {
             console.log('submitted form one');
             this.showForm = 2;
         },
-        submitFormTwo() {
-            console.log(this.rDetails);
+        async submitFormTwo() {
+            this.loading = true;
+            const registrationAPI = await RestaurantApis.registerRestaurant(this.rDetails);
+            console.log(registrationAPI);
+            this.loading = false;
             this.showModal = true;
         }
     }

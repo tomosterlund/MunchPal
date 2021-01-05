@@ -1,4 +1,5 @@
-// Das erste Formular das gezeigt wird, wenn ein Restaurant sich registriert.
+// Das zweite Formular das gezeigt wird, wenn ein Restaurant sich registriert.
+// @param loading: boolean == wenn die App auf eine API response wartet
 // $emit form-submit, mit payload restaurantDetails: { name: '', address: '', zip: '', city: '' } 
 
 <template>
@@ -25,20 +26,28 @@
         />
 
         <MunchButton
+            v-if="!loading"
             text="Finish registration"
             @clicked="$emit('form-submit')"
         />
+
+        <Spinner
+            v-if="loading"
+        />
+
     </div>
 </template>
 
 <script>
 import Input from './../../Forms/Input'
 import MunchButton from '../../Forms/MunchButton'
+import Spinner from './../../UI/Spinner.vue'
 
 export default {
     components: {
         Input,
-        MunchButton
+        MunchButton,
+        Spinner
     },
     data() {
         return {
@@ -49,7 +58,10 @@ export default {
                 city: ''
             }
         }
-    }
+    },
+    props: [
+        'loading'
+    ]
 }
 </script>
 
