@@ -30,9 +30,7 @@ class UserController extends Controller
         $name = $request->input('name');
         $email = $request->input('email');
         $password = Hash::make($request->input('password'));
-        // $address = $request->input('address');
-        // $zip = $request->input('zip');
-        // $city = $request->input('city');
+        
         $_id = uniqid();
 
         Redis::command('HMSET', [
@@ -78,9 +76,24 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update_address(Request $request)
     {
-        //
+
+        $email = $request->email;
+        $address = $request->address;
+        $zip = $request->zip;
+        $city = $request->city;
+
+        Redis::command('HMSET', [
+            "users:$email",
+            "address", "$address",
+            "zip", "$zip",
+            "city", "$city"
+        ]);
+
+        $user = Redis::command('HGETALL', ["users:$email"]);
+
+        return $user;
     }
 
     /**

@@ -77,7 +77,7 @@ export default {
             name: '',
             email: '',
             password: '',
-            pwConfirm: ''
+            pwConfirm: '',
         }
     },
     methods: {

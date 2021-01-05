@@ -46,3 +46,5 @@ Route::post('/img', function(Request $request) {
     return $path;
 
 });
+
+Route::patch('/update-user-address', [UserController::class, 'update_address']);

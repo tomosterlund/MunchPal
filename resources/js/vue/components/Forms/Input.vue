@@ -2,7 +2,7 @@
 // @param fieldName: string
 // @param inputType: string
 // @param label: string
-// $emit inputUpdated
+// $emit inputevent
 
 <template>
     <div class="InputContainer">

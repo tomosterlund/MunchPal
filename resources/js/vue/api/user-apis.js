@@ -14,6 +14,17 @@ class userApis {
         return console.log(data);
     }
 
+    static async signinUserHandler (email, password) {
+
+        const { data } = await Axios.post('/login-user', {
+            email,
+            password
+        });
+
+        return data;
+
+    }
+
 }
 
 export default userApis;
