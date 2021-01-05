@@ -4,7 +4,9 @@ use App\Http\Controllers\MenuItemController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\UserController;
+use App\Mail\FirstEmail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,3 +50,17 @@ Route::post('/img', function(Request $request) {
 });
 
 Route::patch('/update-user-address', [UserController::class, 'update_address']);
+
+Route::get('/send-first-email', function() {
+
+    Mail::to('tom.osterlund1@gmail.com')->send(new FirstEmail);
+
+        if(Mail::failures() != 0) {
+            return "<p> Success! Your E-mail has been sent.</p>";
+        }
+
+        else {
+            return "<p> Failed! Your E-mail has not sent.</p>";
+        }
+
+});
