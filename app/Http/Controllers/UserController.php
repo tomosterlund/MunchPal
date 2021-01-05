@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\WelcomeToMunchPal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redis;
 
 class UserController extends Controller
@@ -39,10 +41,9 @@ class UserController extends Controller
             "name", "$name",
             "email", "$email",
             "password", "$password",
-            // "address", "$address",
-            // "zip", "$zip",
-            // "city", "$city"
             ]);
+        
+            Mail::to('tom.osterlund1@gmail.com')->send(new WelcomeToMunchPal($name));
 
         return response()->json(["created" => true], 201);
     }
