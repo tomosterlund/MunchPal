@@ -31,6 +31,12 @@
             label="City"
         />
 
+        <Select
+            :optionsArr="rCategories"
+            label="Restaurant category"
+            @form-update="$emit('category-change', $event)"
+        />
+
         <MunchButton
             text="Done"
             @clicked="$emit('form-submit')"
@@ -41,11 +47,13 @@
 <script>
 import Input from './../../Forms/Input'
 import MunchButton from '../../Forms/MunchButton'
+import Select from './../../Forms/Select'
 
 export default {
     components: {
         Input,
-        MunchButton
+        MunchButton,
+        Select
     },
     data() {
         return {
@@ -53,8 +61,17 @@ export default {
                 name: '',
                 address: '',
                 zip: '',
-                city: ''
-            }
+                city: '',
+                category: ''
+            },
+            rCategories: [
+                'Italian',
+                'Hamburgers',
+                'Sushi',
+                'Chinese',
+                'Thai',
+                'Fusion'
+            ]
         }
     }
 }
