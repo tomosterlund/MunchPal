@@ -55,6 +55,9 @@ export default {
         async signinHandler() {
             this.loading = true;
             const userData = await userApis.signinUserHandler(this.email, this.password);
+            this.$store.commit('setSessionUser', userData.sessionUser);
+            this.$store.commit('userType', 'consumer');
+            this.$store.commit('isAuth');
             console.log(userData);
             this.loading = false;
             this.$router.push('/');

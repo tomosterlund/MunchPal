@@ -10,11 +10,12 @@ window.Vue = require('vue');
 import VueRouter from 'vue-router'
 import { routes } from './vue/routes/routes'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faBars, faHome, faPaperPlane, faSignInAlt, faSync, faUserPlus, faUtensils } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faHome, faPaperPlane, faSignInAlt, faSync, faUser, faUserPlus, faUtensils } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Vue from 'vue';
+import store from './vue/store/store'
 
-library.add(faBars, faHome, faUserPlus, faSignInAlt, faPaperPlane, faSync, faUtensils)
+library.add(faBars, faHome, faUserPlus, faSignInAlt, faPaperPlane, faSync, faUtensils, faUser)
 
 /**
  * The following block of code may be used to automatically register your
@@ -46,5 +47,6 @@ const router = new VueRouter({
 
 const app = new Vue({
     el: '#app',
-    router: router
+    router: router,
+    store: store
 });

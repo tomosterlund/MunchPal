@@ -3,7 +3,13 @@
 
 <template>
     <div id="Sidebar" :class="{ Show: showComponent, Hide: !showComponent }">
-        <ul v-for="menuItem in menuList.unAuth" :key="menuItem.path">
+
+        <UserOptions v-if="authStatus == 'auth'" />
+
+        <ul
+            v-for="menuItem in menuList[authStatus]"
+            :key="menuItem.path"
+        >
             <li>
                 <router-link :to="menuItem.path">
                     <font-awesome-icon :icon="menuItem.icon" />
@@ -13,11 +19,16 @@
                 </router-link>
             </li>
         </ul>
+
     </div>
 </template>
 
 <script>
+
+import UserOptions from './UserOptions'
+
 export default {
+    components: {UserOptions},
     props: [
         'show'
     ],
@@ -25,17 +36,25 @@ export default {
         return {
             showComponent: false,
             menuList: {
-                unAuth: [
+                unauth: [
                     { path: '/', icon: 'home', text: 'Home'},
                     { path: '/register', icon: 'user-plus', text: 'Sign up' },
                     { path: '/signin', icon: 'sign-in-alt', text: 'Sign in' }
+                ],
+                auth: [
+                    { path: '/', icon: 'home', text: 'Home'},
                 ]
-            }
+            },
+            count: 1
+        }
+    },
+    computed: {
+        authStatus () {
+            return this.$store.state.userModule.auth;
         }
     },
     watch: {
         show(newVal, oldVal) {
-            console.log('this runs');
             if (newVal == true) {
                 return this.showComponent = true;
             } else if (newVal == false) {
